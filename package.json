@@ -1,0 +1,40 @@
+{
+  "name": "discord-together",
+  "version": "1.0.0",
+  "description": "Play games or watch YouTube videos together on Discord !",
+  "main": "index.js",
+  "typings": "./typings/DiscordTogether.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RemyK888/discord-together.git"
+  },
+  "keywords": [
+    "discord together",
+    "discord 2gether",
+    "watch2gether",
+    "youtube",
+    "discord.js",
+    "together",
+    "discord",
+    "youtube",
+    "videos",
+    "poker"
+  ],
+  "author": "RemyK",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RemyK888/discord-together/issues"
+  },
+  "homepage": "https://github.com/RemyK888/discord-together#readme",
+  "dependencies": {
+    "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {
+    "@types/node": "^15.0.1",
+    "discord.js": "^12.5.3",
+    "typescript": "^4.2.4"
+  }
+}
