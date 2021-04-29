@@ -51,6 +51,7 @@ class DiscordTogether {
      * client.login('your token');
      */
     constructor(client, options = {}) {
+        super();
         if (!client) {
             throw new SyntaxError('Invalid Discord.Client !');
         };

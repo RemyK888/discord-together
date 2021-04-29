@@ -54,30 +54,30 @@ client.login('your token');
 # 🔧 Options
 - Youtube
 ```js
-        client.discordTogether.createTogetherCode(message.member.voice.channelID, 'youtube').then(async invite => {
-            return message.channel.send(`[LINK](${invite.code})`);
-        });
+client.discordTogether.createTogetherCode(message.member.voice.channelID, 'youtube').then(async invite => {
+    return message.channel.send(`[LINK](${invite.code})`);
+});
 ```
 
 - Poker
 ```js
-        client.discordTogether.createTogetherCode(message.member.voice.channelID, 'poker').then(async invite => {
-            return message.channel.send(`[LINK](${invite.code})`);
-        });
+client.discordTogether.createTogetherCode(message.member.voice.channelID, 'poker').then(async invite => {
+    return message.channel.send(`[LINK](${invite.code})`);
+});
 ```
 
 - Betrayal
 ```js
-        client.discordTogether.createTogetherCode(message.member.voice.channelID, 'betrayal').then(async invite => {
-            return message.channel.send(`[LINK](${invite.code})`);
-        });
+client.discordTogether.createTogetherCode(message.member.voice.channelID, 'betrayal').then(async invite => {
+    return message.channel.send(`[LINK](${invite.code})`);
+});
 ```
 
 - Fishing
 ```js
-        client.discordTogether.createTogetherCode(message.member.voice.channelID, 'fishing').then(async invite => {
-            return message.channel.send(`[LINK](${invite.code})`);
-        });
+client.discordTogether.createTogetherCode(message.member.voice.channelID, 'fishing').then(async invite => {
+    return message.channel.send(`[LINK](${invite.code})`);
+});
 ```
 
 
