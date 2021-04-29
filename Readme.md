@@ -36,7 +36,7 @@ const client = new Discord.Client();
 const { DiscordTogether } = require('discord-together');
 
 client.discordTogether = new DiscordTogether(client, {
-    token: 'your token'
+    token: 'your Discord bot token'
 });
 
 client.on('message', async message => {
@@ -47,7 +47,7 @@ client.on('message', async message => {
     };
 });
 
-client.login('your token');
+client.login('your Discord bot token');
 ```
 <br/>
 
