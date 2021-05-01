@@ -88,7 +88,7 @@ class DiscordTogether {
         let returnData = {
             code: 'none'
         };
-        if (options && options.toLowerCase() == 'youtube' || options.toLowerCase() == 'poker' || options.toLowerCase() == 'betrayal' || options.toLowerCase() == 'fishing') {
+        if (options && ['youtube', 'poker', 'fishing', 'betrayal'].includes(options.toLowerCase())) {
             switch (options) {
                 case 'youtube':
                     try {

@@ -82,6 +82,17 @@ client.discordTogether.createTogetherCode(message.member.voice.channelID, 'fishi
 });
 ```
 
+# 📷 Image 
+
+![Invite link](https://media.discordapp.net/attachments/835896457454026802/837968506846183474/2021-05-01_10h26_17.png)
+
+### *Note: you have to click on the BLUE LINK, not the 'Play' button, in order to start the activity !*
+
+<br/>
+
+![YouTube Together](https://media.discordapp.net/attachments/835896457454026802/837968510843093033/2021-05-01_10h27_31.png?width=1229&height=676)
+
+<br/>
 
 # 🌌 Example of bots made with Discord Together
 - [Discord Together Bot](https://github.com/RemyK888/discord-together-bot) by [RemyK](https://github.com/RemyK888)
