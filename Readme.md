@@ -96,6 +96,7 @@ client.discordTogether.createTogetherCode(message.member.voice.channelID, 'fishi
 
 # 🌌 Example of bots made with Discord Together
 - [Discord Together Bot](https://github.com/RemyK888/discord-together-bot) by [RemyK](https://github.com/RemyK888)
+- [Lambdapse](https://github.com/lambdagit101/lambdapse) by [Lambdaguy101](https://github.com/lambdagit101)
 
 # 🚀 Others
 
