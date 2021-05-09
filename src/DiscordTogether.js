@@ -1,15 +1,6 @@
 const fetch = require('node-fetch');
 
 /**
- * YoutubeTogether options
- * @typedef {object} youtubeTogetherOptions
- * @property {string} [token='none'] The bot token;
- */
-const youtubeTogetherOptions = {
-    token: 'none'
-};
-
-/**
  * @typedef {('youtube'|'poker'|'betrayal'|'fishing')}
  * @property {string} youtube
  * @property {string} poker
@@ -30,15 +21,12 @@ class DiscordTogether {
     /**
      * Create a new YoutubeTogether
      * @param {string} client Discord.Client
-     * @param {youtubeTogetherOptions} [options={}] YoutubeTogether options 
      * @example
      * const Discord = require('discord.js');
      * const client = new Discord.Client();
      * const { DiscordTogether } = require('discord-together');
      *
-     *client.discordTogether = new DiscordTogether(client, {
-            token: 'your token'
-     * });
+     * client.discordTogether = new DiscordTogether(client);
      *
      * client.on('message', async message => {
      *      if (message.content === 'start') {
@@ -50,24 +38,17 @@ class DiscordTogether {
      *
      * client.login('your token');
      */
-    constructor(client, options = {}) {
+    constructor(client) {
         if (!client) {
             throw new SyntaxError('Invalid Discord.Client !');
         };
-        if (!options || !options.token || options.token === 'none') {
-            throw new SyntaxError('Invalid token !');
-        };
+        
         /**
          * Discord.Client
          */
         this.client = client;
-        /**
-         * @ignore
-         * @private
-         */
-        this.token = options.token;
     };
-
+    
     /**
      * Create a Youtube Together invite code (note: send the invite using markdown link)
      * @param {string} voiceChannelId 
@@ -103,7 +84,7 @@ class DiscordTogether {
                                 validate: null
                             }),
                             headers: {
-                                'Authorization': `Bot ${this.token}`,
+                                'Authorization': `Bot ${this.client.token}`,
                                 'Content-Type': 'application/json'
                             }
                         }).then(res => res.json())
@@ -130,7 +111,7 @@ class DiscordTogether {
                                 validate: null
                             }),
                             headers: {
-                                'Authorization': `Bot ${this.token}`,
+                                'Authorization': `Bot ${this.client.token}`,
                                 'Content-Type': 'application/json'
                             }
                         }).then(res => res.json())
@@ -157,7 +138,7 @@ class DiscordTogether {
                                 validate: null
                             }),
                             headers: {
-                                'Authorization': `Bot ${this.token}`,
+                                'Authorization': `Bot ${this.client.token}`,
                                 'Content-Type': 'application/json'
                             }
                         }).then(res => res.json())
@@ -184,7 +165,7 @@ class DiscordTogether {
                                 validate: null
                             }),
                             headers: {
-                                'Authorization': `Bot ${this.token}`,
+                                'Authorization': `Bot ${this.client.token}`,
                                 'Content-Type': 'application/json'
                             }
                         }).then(res => res.json())

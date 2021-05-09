@@ -1,6 +1,6 @@
 {
   "name": "discord-together",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Play games or watch YouTube videos together on Discord !",
   "main": "index.js",
   "scripts": {
