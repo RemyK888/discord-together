@@ -97,7 +97,7 @@ class DiscordTogether {
                             body: JSON.stringify({
                                 max_age: 86400,
                                 max_uses: 0,
-                                target_application_id: '755600276941176913',
+                                target_application_id: '755600276941176913', // Note : Thanks to Snowflake thanks to whom I got these ids
                                 target_type: 2,
                                 temporary: false,
                                 validate: null
