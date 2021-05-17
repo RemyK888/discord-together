@@ -11,7 +11,8 @@ const togetherChannelOptions = {
     youtube: 'youtube',
     poker: 'poker',
     betrayal: 'betrayal',
-    fishing: 'fishing'
+    fishing: 'fishing',
+    chess: 'chess'
 };
 
 /**
@@ -69,8 +70,35 @@ class DiscordTogether {
         let returnData = {
             code: 'none'
         };
-        if (options && ['youtube', 'poker', 'fishing', 'betrayal'].includes(options.toLowerCase())) {
+        if (options && ['youtube', 'poker', 'fishing', 'betrayal', 'chess'].includes(options.toLowerCase())) {
             switch (options) {
+                case 'chess':
+                    try {
+                        await fetch(`https://discord.com/api/v8/channels/${voiceChannelId}/invites`, {
+                            method: 'POST',
+                            body: JSON.stringify({
+                                max_age: 86400,
+                                max_uses: 0,
+                                target_application_id: '832012586023256104', // Note : Thanks to Snowflake thanks to whom I got these ids
+                                target_type: 2,
+                                temporary: false,
+                                validate: null
+                            }),
+                            headers: {
+                                'Authorization': `Bot ${this.client.token}`,
+                                'Content-Type': 'application/json'
+                            }
+                        }).then(res => res.json())
+                            .then(invite => {
+                                if (invite.error || !invite.code) {
+                                    throw new Error('An error occured while retrieving data !');
+                                };
+                                returnData.code = `https://discord.com/invite/${invite.code}`
+                            })
+                    } catch (err) {
+                        throw new Error('An error occured while starting Chess !');
+                    }
+                    break;
                 case 'youtube':
                     try {
                         await fetch(`https://discord.com/api/v8/channels/${voiceChannelId}/invites`, {
