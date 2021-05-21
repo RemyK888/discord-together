@@ -42,13 +42,13 @@ class DiscordTogether {
         if (!client) {
             throw new SyntaxError('Invalid Discord.Client !');
         };
-        
+
         /**
          * Discord.Client
          */
         this.client = client;
     };
-    
+
     /**
      * Create a Youtube Together invite code (note: send the invite using markdown link)
      * @param {string} voiceChannelId 
@@ -70,46 +70,46 @@ class DiscordTogether {
             code: 'none'
         };
         if (options && ['youtube', 'poker', 'fishing', 'betrayal'].includes(options.toLowerCase())) {
-			let application = '';
+            let application = '';
             switch (options) {
                 case 'youtube':
-					application = '755600276941176913';
+                    application = '755600276941176913';
                     break;
                 case 'poker':
-					application = '755827207812677713';
+                    application = '755827207812677713';
                     break;
                 case 'betrayal':
-					application = '773336526917861400';
+                    application = '773336526917861400';
                     break;
                 case 'fishing':
-					application = '814288819477020702';
+                    application = '814288819477020702';
                     break;
             };
-			try {
-				await fetch(`https://discord.com/api/v8/channels/${voiceChannelId}/invites`, {
-					method: 'POST',
-					body: JSON.stringify({
-						max_age: 86400,
-						max_uses: 0,
-						target_application_id: application,
-						target_type: 2,
-						temporary: false,
-						validate: null
-					}),
-					headers: {
-						'Authorization': `Bot ${this.client.token}`,
-						'Content-Type': 'application/json'
-					}
-				}).then(res => res.json())
-					.then(invite => {
-						if (invite.error || !invite.code) {
-							throw new Error('An error occured while retrieving data !');
-						};
-						returnData.code = `https://discord.com/invite/${invite.code}`
-					})
-			} catch (err) {
-				throw new Error('An error occured while starting fishing together !');
-			}
+            try {
+                await fetch(`https://discord.com/api/v8/channels/${voiceChannelId}/invites`, {
+                        method: 'POST',
+                        body: JSON.stringify({
+                            max_age: 86400,
+                            max_uses: 0,
+                            target_application_id: application,
+                            target_type: 2,
+                            temporary: false,
+                            validate: null
+                        }),
+                        headers: {
+                            'Authorization': `Bot ${this.client.token}`,
+                            'Content-Type': 'application/json'
+                        }
+                    }).then(res => res.json())
+                    .then(invite => {
+                        if (invite.error || !invite.code) {
+                            throw new Error('An error occured while retrieving data !');
+                        };
+                        returnData.code = `https://discord.com/invite/${invite.code}`
+                    })
+            } catch (err) {
+                throw new Error('An error occured while starting fishing together !');
+            }
             return returnData;
         } else {
             throw new SyntaxError('Invalid option !');
