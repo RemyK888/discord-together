@@ -11,7 +11,8 @@ const togetherChannelOptions = {
     youtube: 'youtube',
     poker: 'poker',
     betrayal: 'betrayal',
-    fishing: 'fishing'
+    fishing: 'fishing',
+    chess: 'chess'
 };
 
 /**
@@ -69,7 +70,7 @@ class DiscordTogether {
         let returnData = {
             code: 'none'
         };
-        if (options && ['youtube', 'poker', 'fishing', 'betrayal'].includes(options.toLowerCase())) {
+        if (options && ['youtube', 'poker', 'fishing', 'betrayal', 'chess'].includes(options.toLowerCase())) {
             let application = '';
             switch (options) {
                 case 'youtube':
@@ -83,6 +84,9 @@ class DiscordTogether {
                     break;
                 case 'fishing':
                     application = '814288819477020702';
+                    break;
+                case 'chess':
+                    application = '832012586023256104';
                     break;
             };
             try {
