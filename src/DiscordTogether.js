@@ -1,11 +1,12 @@
 const fetch = require('node-fetch');
 
 /**
- * @typedef {('youtube'|'poker'|'betrayal'|'fishing')}
+ * @typedef {('youtube'|'poker'|'betrayal'|'fishing'|'chess')}
  * @property {string} youtube
  * @property {string} poker
  * @property {string} betrayal
  * @property {string} fishing
+ * @property {string} chess
  */
 const togetherChannelOptions = {
     youtube: 'youtube',
