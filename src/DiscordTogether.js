@@ -70,116 +70,46 @@ class DiscordTogether {
             code: 'none'
         };
         if (options && ['youtube', 'poker', 'fishing', 'betrayal'].includes(options.toLowerCase())) {
+			let application = '';
             switch (options) {
                 case 'youtube':
-                    try {
-                        await fetch(`https://discord.com/api/v8/channels/${voiceChannelId}/invites`, {
-                            method: 'POST',
-                            body: JSON.stringify({
-                                max_age: 86400,
-                                max_uses: 0,
-                                target_application_id: '755600276941176913', // Note : Thanks to Snowflake thanks to whom I got these ids
-                                target_type: 2,
-                                temporary: false,
-                                validate: null
-                            }),
-                            headers: {
-                                'Authorization': `Bot ${this.client.token}`,
-                                'Content-Type': 'application/json'
-                            }
-                        }).then(res => res.json())
-                            .then(invite => {
-                                if (invite.error || !invite.code) {
-                                    throw new Error('An error occured while retrieving data !');
-                                };
-                                returnData.code = `https://discord.com/invite/${invite.code}`
-                            })
-                    } catch (err) {
-                        throw new Error('An error occured while starting Youtube together !');
-                    }
+					application = '755600276941176913';
                     break;
                 case 'poker':
-                    try {
-                        await fetch(`https://discord.com/api/v8/channels/${voiceChannelId}/invites`, {
-                            method: 'POST',
-                            body: JSON.stringify({
-                                max_age: 86400,
-                                max_uses: 0,
-                                target_application_id: '755827207812677713',
-                                target_type: 2,
-                                temporary: false,
-                                validate: null
-                            }),
-                            headers: {
-                                'Authorization': `Bot ${this.client.token}`,
-                                'Content-Type': 'application/json'
-                            }
-                        }).then(res => res.json())
-                            .then(invite => {
-                                if (invite.error || !invite.code) {
-                                    throw new Error('An error occured while retrieving data !');
-                                };
-                                returnData.code = `https://discord.com/invite/${invite.code}`
-                            })
-                    } catch (err) {
-                        throw new Error('An error occured while starting poker together !');
-                    }
+					application = '755827207812677713';
                     break;
                 case 'betrayal':
-                    try {
-                        await fetch(`https://discord.com/api/v8/channels/${voiceChannelId}/invites`, {
-                            method: 'POST',
-                            body: JSON.stringify({
-                                max_age: 86400,
-                                max_uses: 0,
-                                target_application_id: '773336526917861400',
-                                target_type: 2,
-                                temporary: false,
-                                validate: null
-                            }),
-                            headers: {
-                                'Authorization': `Bot ${this.client.token}`,
-                                'Content-Type': 'application/json'
-                            }
-                        }).then(res => res.json())
-                            .then(invite => {
-                                if (invite.error || !invite.code) {
-                                    throw new Error('An error occured while retrieving data !');
-                                };
-                                returnData.code = `https://discord.com/invite/${invite.code}`
-                            })
-                    } catch (err) {
-                        throw new Error('An error occured while starting betrayal together !');
-                    }
+					application = '773336526917861400';
                     break;
                 case 'fishing':
-                    try {
-                        await fetch(`https://discord.com/api/v8/channels/${voiceChannelId}/invites`, {
-                            method: 'POST',
-                            body: JSON.stringify({
-                                max_age: 86400,
-                                max_uses: 0,
-                                target_application_id: '814288819477020702',
-                                target_type: 2,
-                                temporary: false,
-                                validate: null
-                            }),
-                            headers: {
-                                'Authorization': `Bot ${this.client.token}`,
-                                'Content-Type': 'application/json'
-                            }
-                        }).then(res => res.json())
-                            .then(invite => {
-                                if (invite.error || !invite.code) {
-                                    throw new Error('An error occured while retrieving data !');
-                                };
-                                returnData.code = `https://discord.com/invite/${invite.code}`
-                            })
-                    } catch (err) {
-                        throw new Error('An error occured while starting fishing together !');
-                    }
+					application = '814288819477020702';
                     break;
             };
+			try {
+				await fetch(`https://discord.com/api/v8/channels/${voiceChannelId}/invites`, {
+					method: 'POST',
+					body: JSON.stringify({
+						max_age: 86400,
+						max_uses: 0,
+						target_application_id: application,
+						target_type: 2,
+						temporary: false,
+						validate: null
+					}),
+					headers: {
+						'Authorization': `Bot ${this.client.token}`,
+						'Content-Type': 'application/json'
+					}
+				}).then(res => res.json())
+					.then(invite => {
+						if (invite.error || !invite.code) {
+							throw new Error('An error occured while retrieving data !');
+						};
+						returnData.code = `https://discord.com/invite/${invite.code}`
+					})
+			} catch (err) {
+				throw new Error('An error occured while starting fishing together !');
+			}
             return returnData;
         } else {
             throw new SyntaxError('Invalid option !');
