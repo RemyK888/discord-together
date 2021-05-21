@@ -66,6 +66,13 @@ client.discordTogether.createTogetherCode(message.member.voice.channelID, 'poker
 });
 ```
 
+- Chess
+```js
+client.discordTogether.createTogetherCode(message.member.voice.channelID, 'chess').then(async invite => {
+    return message.channel.send(`${invite.code}`);
+});
+```
+
 - Betrayal
 ```js
 client.discordTogether.createTogetherCode(message.member.voice.channelID, 'betrayal').then(async invite => {

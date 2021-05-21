@@ -1,11 +1,12 @@
 const fetch = require('node-fetch');
 
 /**
- * @typedef {('youtube'|'poker'|'betrayal'|'fishing')}
+ * @typedef {('youtube'|'poker'|'betrayal'|'fishing'|'chess')}
  * @property {string} youtube
  * @property {string} poker
  * @property {string} betrayal
  * @property {string} fishing
+ * @property {string} chess
  */
 const togetherChannelOptions = {
     youtube: 'youtube',
@@ -42,13 +43,13 @@ class DiscordTogether {
         if (!client) {
             throw new SyntaxError('Invalid Discord.Client !');
         };
-        
+
         /**
          * Discord.Client
          */
         this.client = client;
     };
-    
+
     /**
      * Create a Youtube Together invite code (note: send the invite using markdown link)
      * @param {string} voiceChannelId 
@@ -69,7 +70,7 @@ class DiscordTogether {
         let returnData = {
             code: 'none'
         };
-        if (options && ['youtube', 'poker', 'fishing', 'betrayal'].includes(options.toLowerCase())) {
+        if (options && ['youtube', 'poker', 'fishing', 'betrayal', 'chess'].includes(options.toLowerCase())) {
             switch (options) {
                 case 'youtube':
                     try {
@@ -177,6 +178,33 @@ class DiscordTogether {
                             })
                     } catch (err) {
                         throw new Error('An error occured while starting fishing together !');
+                    }
+                    break;
+                case 'chess':
+                    try {
+                        await fetch(`https://discord.com/api/v8/channels/${voiceChannelId}/invites`, {
+                            method: 'POST',
+                            body: JSON.stringify({
+                                max_age: 86400,
+                                max_uses: 0,
+                                target_application_id: '832012586023256104',
+                                target_type: 2,
+                                temporary: false,
+                                validate: null
+                            }),
+                            headers: {
+                                'Authorization': `Bot ${this.client.token}`,
+                                'Content-Type': 'application/json'
+                            }
+                        }).then(res => res.json())
+                            .then(invite => {
+                                if (invite.error || !invite.code) {
+                                    throw new Error('An error occured while retrieving data !');
+                                };
+                                returnData.code = `https://discord.com/invite/${invite.code}`
+                            })
+                    } catch (err) {
+                        throw new Error('An error occured while starting chess together !');
                     }
                     break;
             };
