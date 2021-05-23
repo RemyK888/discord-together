@@ -1,12 +1,13 @@
 const fetch = require('node-fetch');
 
-
 const defaultApplications = {
     'youtube':   '755600276941176913',
     'poker':     '755827207812677713',
     'betrayal':  '773336526917861400',
-    'fishing':   '814288819477020702'
+    'fishing':   '814288819477020702',
+    'chess':     '832012586023256104'
 } // Note : Thanks to Snowflake thanks to whom I got these ids
+
 
 /**
  * Class symbolizing a YoutubeTogether
@@ -38,14 +39,14 @@ class DiscordTogether {
         if (!client) {
             throw new SyntaxError('Invalid Discord.Client !');
         };
-        
+
         /**
          * Discord.Client
          */
         this.client = client;
         this.applications = {...defaultApplications, ...applications};
     };
-    
+
     /**
      * Create a Youtube Together invite code (note: send the invite using markdown link)
      * @param {string} voiceChannelId 
