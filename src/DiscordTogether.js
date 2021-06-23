@@ -8,7 +8,6 @@ const defaultApplications = {
     'chess':     '832012586023256104'  // Note : Thanks to Asterio thanks to whom I got chess ID
 };
 
-
 /**
  * Class symbolizing a YoutubeTogether
  * @template {Object.<string, string>} T
@@ -36,15 +35,15 @@ class DiscordTogether {
      * client.login('your token');
      */
     constructor(client, applications = defaultApplications) {
-        if (!client) {
-            throw new SyntaxError('Invalid Discord.Client !');
-        };
+
+        if (!client) throw new SyntaxError('Invalid Discord.Client !');
 
         /**
          * Discord.Client
          */
         this.client = client;
         this.applications = { ...defaultApplications, ...applications };
+
     };
 
     /**
@@ -64,39 +63,38 @@ class DiscordTogether {
         /**
          * @param {string} code The invite link (only use the blue link)
          */
-        let returnData = {
-            code: 'none'
-        };
-        if (option && this.applications[option.toLowerCase()]) {
-            let applicationID = this.applications[option.toLowerCase()];
-            try {
-                await fetch(`https://discord.com/api/v8/channels/${voiceChannelId}/invites`, {
-                    method: 'POST',
-                    body: JSON.stringify({
-                        max_age: 86400,
-                        max_uses: 0,
-                        target_application_id: applicationID,
-                        target_type: 2,
-                        temporary: false,
-                        validate: null
-                    }),
-                    headers: {
-                        'Authorization': `Bot ${this.client.token}`,
-                        'Content-Type': 'application/json'
-                    }
-                }).then(res => res.json())
-                    .then(invite => {
-                        if (invite.error || !invite.code) {
-                            throw new Error('An error occured while retrieving data !');
-                        };
-                        returnData.code = `https://discord.com/invite/${invite.code}`
-                    })
-            } catch (err) {
-                throw new Error('An error occured while starting Youtube together !');
-            }
-            return returnData;
-        } else {
-            throw new SyntaxError('Invalid option !');
+
+        if (!option) throw new SyntaxError('Missing option!');
+
+        let applicationID = this.applications[option.toLowerCase()];
+
+        if (!applicationID && (option.toString().length !== 18 || isNaN(option))) throw new SyntaxError('Invalid custom option ID !');
+
+        try {
+
+            let res = await fetch(`https://discord.com/api/v8/channels/${voiceChannelId}/invites`, {
+                method: 'POST',
+                body: JSON.stringify({
+                    max_age: 86400,
+                    max_uses: 0,
+                    target_application_id: applicationID || option,
+                    target_type: 2,
+                    temporary: false,
+                    validate: null
+                }),
+                headers: {
+                    'Authorization': `Bot ${this.client.token}`,
+                    'Content-Type': 'application/json'
+                }
+            })
+            
+            let invite = await res.json();
+            if (invite.errors || !invite.created_at || !invite.code) throw new Error('An error occured while retrieving data !');
+
+            return `https://discord.com/invite/${invite.code}`;
+
+        } catch (err) {
+            throw new Error(`An error occured while starting ${applicationID ? option : 'Discord'} together !`);
         }
     };
 };
