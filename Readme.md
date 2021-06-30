@@ -1,12 +1,12 @@
 <center>
 <h1><strong>Discord Together</strong></h1>
 
-![DL](https://img.shields.io/npm/dt/discord-together?style=for-the-badge)
-
-
 [![NPM](https://nodei.co/npm/discord-together.png)](https://nodei.co/npm/discord-together/)
 
 [![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com)
+
+![DL](https://img.shields.io/npm/dt/discord-together?style=for-the-badge)
+
 </center>
 
 # 🔩 Installation
