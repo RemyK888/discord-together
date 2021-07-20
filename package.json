@@ -1,6 +1,6 @@
 {
   "name": "discord-together",
-  "version": "1.1.14",
+  "version": "1.1.2",
   "description": "Play games or watch YouTube videos together on Discord !",
   "main": "index.js",
   "scripts": {
@@ -10,6 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/RemyK888/discord-together.git"
   },
+  "types": "./types/index.d.ts",
   "keywords": [
     "discord together",
     "discord 2gether",
@@ -29,9 +30,12 @@
   },
   "homepage": "https://github.com/RemyK888/discord-together#readme",
   "dependencies": {
-    "node-fetch": "^2.6.1"
+    "node-fetch": "^2.6.1",
+    "discord.js": "^12.5.3"
   },
   "devDependencies": {
-    "discord.js": "^12.5.3"
+    "@types/node": "^16.3.1",
+    "@types/ws": "^7.4.6",
+    "check-dts": "^0.5.2"
   }
 }

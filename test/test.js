@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const { DiscordTogether } = require('discord-together');
+const { DiscordTogether } = require('../index');
 
 client.discordTogether = new DiscordTogether(client);
 
@@ -15,4 +15,5 @@ client.on('message', async message => {
 });
 
 client.login('your Discord bot token');
+
 

@@ -1,11 +1,12 @@
 const fetch = require('node-fetch');
+const { Client } = require('discord.js');
 
 const defaultApplications = {
     'youtube':   '755600276941176913', // Note : Thanks to Snowflake thanks to whom I got YouTube ID
     'poker':     '755827207812677713',
     'betrayal':  '773336526917861400',
     'fishing':   '814288819477020702',
-    'chess':     '832012586023256104'  // Note : Thanks to Asterio thanks to whom I got chess ID
+    'chess':     '832012586023256104'  // Note : First package to offer chess, any other package offering it will be clearly inspired by it
 };
 
 
@@ -16,7 +17,7 @@ const defaultApplications = {
 class DiscordTogether {
     /**
      * Create a new YoutubeTogether
-     * @param {string} client Discord.Client
+     * @param {Client} client Discord.Client
      * @param {T} applications
      * @example
      * const Discord = require('discord.js');
