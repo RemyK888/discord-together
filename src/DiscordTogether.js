@@ -90,6 +90,7 @@ class DiscordTogether {
                         if (invite.error || !invite.code) {
                             throw new Error('An error occured while retrieving data !');
                         };
+                        if(invite.code === 50013 || invite.code === '50013') throw new Error('Your bot lacks permissions to perform that action')
                         returnData.code = `https://discord.com/invite/${invite.code}`
                     })
             } catch (err) {
