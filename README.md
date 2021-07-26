@@ -74,6 +74,13 @@ client.discordTogether.createTogetherCode(message.member.voice.channelID, 'chess
     return message.channel.send(`${invite.code}`);
 });
 ```
+Or
+
+```js
+client.discordTogether.createTogetherCode(message.member.voice.channelID, 'chessDev').then(async invite => {
+    return message.channel.send(`${invite.code}`);
+});
+```
 
 - Betrayal
 ```js
