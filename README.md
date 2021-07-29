@@ -61,13 +61,6 @@ client.discordTogether.createTogetherCode(message.member.voice.channelID, 'youtu
 });
 ```
 
-- ZombsRoyale
-```js
-client.discordTogether.createTogetherCode(message.member.voice.channelID, 'zombsRoyale').then(async invite => {
-    return message.channel.send(`${invite.code}`);
-});
-```
-
 - Poker
 ```js
 client.discordTogether.createTogetherCode(message.member.voice.channelID, 'poker').then(async invite => {

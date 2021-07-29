@@ -56,7 +56,7 @@ declare class DiscordTogether<T extends {
         fishing: string;
         chessdev: string;
         chess: string;
-        zombsroyale: string;
+        // zombsroyale: string;
     } & T)): Promise<{
         code: string;
     }>;
