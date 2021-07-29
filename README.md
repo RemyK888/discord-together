@@ -61,6 +61,13 @@ client.discordTogether.createTogetherCode(message.member.voice.channelID, 'youtu
 });
 ```
 
+- ZombsRoyale
+```js
+client.discordTogether.createTogetherCode(message.member.voice.channelID, 'zombsRoyale').then(async invite => {
+    return message.channel.send(`${invite.code}`);
+});
+```
+
 - Poker
 ```js
 client.discordTogether.createTogetherCode(message.member.voice.channelID, 'poker').then(async invite => {
@@ -74,13 +81,7 @@ client.discordTogether.createTogetherCode(message.member.voice.channelID, 'chess
     return message.channel.send(`${invite.code}`);
 });
 ```
-Or
-
-```js
-client.discordTogether.createTogetherCode(message.member.voice.channelID, 'chessDev').then(async invite => {
-    return message.channel.send(`${invite.code}`);
-});
-```
+You can also choose the development version of chess, use: `chessDev`.
 
 - Betrayal
 ```js
