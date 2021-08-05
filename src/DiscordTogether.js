@@ -68,8 +68,8 @@ class DiscordTogether {
         let returnData = {
             code: 'none'
         };
-        if (option && this.applications[option.toLowerCase()]) {
-            let applicationID = this.applications[option.toLowerCase()];
+        if (option && this.applications[option.toString().toLowerCase()]) {
+            let applicationID = this.applications[option.toString().toLowerCase()];
             try {
                 await fetch(`https://discord.com/api/v8/channels/${voiceChannelId}/invites`, {
                     method: 'POST',
