@@ -18,6 +18,7 @@ $ npm install discord-together@latest
 ```
 $ npm install discord.js@latest
 ```
+*Note: supports all versions of Discord.js*
 
 # 🔑 Features
 - Easy to use
@@ -42,7 +43,7 @@ client.discordTogether = new DiscordTogether(client);
 client.on('message', async message => {
     if (message.content === 'start') {
         if(message.member.voice.channel) {
-            client.discordTogether.createTogetherCode(message.member.voice.channelID, 'poker').then(async invite => {
+            client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'poker').then(async invite => {
                 return message.channel.send(`${invite.code}`);
             });
         };
@@ -56,21 +57,21 @@ client.login('your Discord bot token');
 # 🔧 Options
 - Youtube
 ```js
-client.discordTogether.createTogetherCode(message.member.voice.channelID, 'youtube').then(async invite => {
+client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'youtube').then(async invite => {
     return message.channel.send(`${invite.code}`);
 });
 ```
 
 - Poker
 ```js
-client.discordTogether.createTogetherCode(message.member.voice.channelID, 'poker').then(async invite => {
+client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'poker').then(async invite => {
     return message.channel.send(`${invite.code}`);
 });
 ```
 
 - Chess
 ```js
-client.discordTogether.createTogetherCode(message.member.voice.channelID, 'chess').then(async invite => {
+client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'chess').then(async invite => {
     return message.channel.send(`${invite.code}`);
 });
 ```
@@ -78,21 +79,21 @@ You can also choose the development version of chess, use: `chessDev`.
 
 - Betrayal
 ```js
-client.discordTogether.createTogetherCode(message.member.voice.channelID, 'betrayal').then(async invite => {
+client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'betrayal').then(async invite => {
     return message.channel.send(`${invite.code}`);
 });
 ```
 
 - Fishing
 ```js
-client.discordTogether.createTogetherCode(message.member.voice.channelID, 'fishing').then(async invite => {
+client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'fishing').then(async invite => {
     return message.channel.send(`${invite.code}`);
 });
 ```
 
 - Custom application ID
 ```js
-client.discordTogether.createTogetherCode(message.member.voice.channelID, 'application ID').then(async invite => {
+client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'application ID').then(async invite => {
     return message.channel.send(`${invite.code}`);
 });
 ```
