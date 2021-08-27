@@ -40,7 +40,7 @@ const { DiscordTogether } = require('discord-together');
 
 client.discordTogether = new DiscordTogether(client);
 
-client.on('message', async message => {
+client.on('messageCreate', async message => {
     if (message.content === 'start') {
         if(message.member.voice.channel) {
             client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'poker').then(async invite => {
