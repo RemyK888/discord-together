@@ -61,6 +61,7 @@ client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'yout
     return message.channel.send(`${invite.code}`);
 });
 ```
+You can also choose the development version of YouTube, use: `youtubeDev`.
 
 - Poker
 ```js
@@ -120,7 +121,7 @@ client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'appl
 
 **This package is under MIT license.**
 
-*Note: This package is not affiliated with Discord or YouTube.*
+*Note: This package is not affiliated with Discord Inc. or YouTube Inc.*
 
 If you have any problems, you can contact: `RemyK#3876`.
 **Discord server:** [Server Link](https://discord.gg/GK8jFXkybz)

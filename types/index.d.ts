@@ -1,11 +1,11 @@
-import Discord from 'discord.js';
+import { Client } from 'discord.js';
 
 declare class DiscordTogether<T extends {
     [x: string]: string;
 }> {
     /**
      * Create a new YoutubeTogether
-     * @param {Discord.Client} client Discord.Client
+     * @param {Client} client Discord.Client
      * @param {T} applications
      * @example
      * const Discord = require('discord.js');
@@ -24,17 +24,19 @@ declare class DiscordTogether<T extends {
      *
      * client.login('your token');
      */
-    constructor(client: Discord.Client, applications?: T);
+    constructor(client: Client, applications?: T);
     /**
      * Discord.Client
      */
     client: string;
     applications: {
         youtube: string;
+        youtubedev: string;
         poker: string;
         betrayal: string;
         fishing: string;
         chess: string;
+        chessdev: string;
     } & T;
     /**
      * Create a Youtube Together invite code (note: send the invite using markdown link)
@@ -48,15 +50,16 @@ declare class DiscordTogether<T extends {
      *           });
      *      };
      * });
+     * @returns {Promise<{ code: string; }>}
      */
     createTogetherCode(voiceChannelId: string, option: keyof ({
         youtube: string;
+        youtubedev: string;
         poker: string;
         betrayal: string;
         fishing: string;
-        chessdev: string;
         chess: string;
-        // zombsroyale: string;
+        chessdev: string;
     } & T)): Promise<{
         code: string;
     }>;
