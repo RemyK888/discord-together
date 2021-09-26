@@ -9,6 +9,9 @@ const defaultApplications = {
   fishing: '814288819477020702',
   chess: '832012774040141894', // Note : First package to offer chess, any other package offering it will be clearly inspired by it
   chessdev: '832012586023256104', // Note : First package to offer chessDev, any other package offering it will be clearly inspired by it
+  lettertile: '879863686565621790',
+  wordsnack: '879863976006127627',
+  doodlecrew: '878067389634314250',
 };
 
 /**

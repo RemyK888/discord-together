@@ -25,6 +25,7 @@ $ npm install discord.js@latest
 - Multiple server
 - Discord support
 - Lightweight
+- 10+ games available
 
 ### <u>Documentation ➩ coming soon !</u>
 
@@ -43,7 +44,7 @@ client.discordTogether = new DiscordTogether(client);
 client.on('messageCreate', async message => { // 'message' for Discord.js v12
     if (message.content === 'start') {
         if(message.member.voice.channel) {
-            client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'poker').then(async invite => {
+            client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'doodlecrew').then(async invite => {
                 return message.channel.send(`${invite.code}`);
             });
         };
@@ -85,16 +86,30 @@ client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'betr
 });
 ```
 
-- Fishing
+- Fishington
 ```js
 client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'fishing').then(async invite => {
     return message.channel.send(`${invite.code}`);
 });
 ```
 
-- Custom application ID
+- Letter Tile
 ```js
-client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'application ID').then(async invite => {
+client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'lettertile').then(async invite => {
+    return message.channel.send(`${invite.code}`);
+});
+```
+
+- Words Snack
+```js
+client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'wordsnack').then(async invite => {
+    return message.channel.send(`${invite.code}`);
+});
+```
+
+- Doodle Crew
+```js
+client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'doodlecrew').then(async invite => {
     return message.channel.send(`${invite.code}`);
 });
 ```
