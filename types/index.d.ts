@@ -40,6 +40,8 @@ declare class DiscordTogether<T extends {
         lettertile: string;
         wordsnack: string;
         doodlecrew: string;
+        awkword: string;
+        spellcast: string;
     } & T;
     /**
      * Create a Youtube Together invite code (note: send the invite using markdown link)
@@ -48,7 +50,7 @@ declare class DiscordTogether<T extends {
      * @example
      * client.on('message', async message => {
      *      if (message.content === 'start') {
-     *          client.discordTogether.createTogetherCode(message.member.voice.channelID, 'doodlecrew').then(async invite => {
+     *          client.discordTogether.createTogetherCode(message.member.voice.channelID, 'spellcast').then(async invite => {
      *              return message.channel.send(`${invite.code}`); // Click the blue link
      *           });
      *      };
@@ -66,6 +68,8 @@ declare class DiscordTogether<T extends {
         lettertile: string;
         wordsnack: string;
         doodlecrew: string;
+        awkword: string;
+        spellcast: string;
     } & T)): Promise<{
         code: string;
     }>;

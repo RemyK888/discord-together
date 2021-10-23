@@ -7,7 +7,7 @@ client.discordTogether = new DiscordTogether(client);
 client.on('messageCreate', async message => { // 'message' for Discord.js v12
     if (message.content === 'start') {
         if(message.member.voice.channel) {
-            client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'youtubedev').then(async invite => {
+            client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'spellcast').then(async invite => { // message.member.voice.channelId for Discord.js v12
                 return message.channel.send(`${invite.code}`); // Click the blue link !
             });
         };

@@ -25,9 +25,7 @@ $ npm install discord.js@latest
 - Multiple server
 - Discord support
 - Lightweight
-- 10+ games available
-
-### <u>Documentation ➩ coming soon !</u>
+- 12+ games available
 
 <br/>
 
@@ -114,6 +112,20 @@ client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'dood
 });
 ```
 
+- SpellCast
+```js
+client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'spellcast').then(async invite => {
+    return message.channel.send(`${invite.code}`);
+});
+```
+
+- Awkword
+```js
+client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'awkword').then(async invite => {
+    return message.channel.send(`${invite.code}`);
+});
+```
+
 # 📷 Image 
 
 ![Invite link](https://media.discordapp.net/attachments/835896457454026802/837968506846183474/2021-05-01_10h26_17.png)
@@ -133,6 +145,8 @@ client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'dood
 # 🚀 Others
 
 ### **Thanks a lot to [3chospirits](https://github.com/3chospirits) who made the typescript declaration file !**
+
+*I would also like to thank all the amazing members of my server who are helping to make this project happen !*
 
 **This package is under MIT license.**
 
