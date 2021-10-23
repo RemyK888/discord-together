@@ -12,6 +12,7 @@ const defaultApplications = {
   lettertile: '879863686565621790',
   wordsnack: '879863976006127627',
   doodlecrew: '878067389634314250',
+  spellcast: "852509694341283871",
 };
 
 /**
