@@ -25,7 +25,7 @@ $ npm install discord.js@latest
 - Multiple server
 - Discord support
 - Lightweight
-- 12+ games available
+- 13+ games available
 
 <br/>
 
@@ -72,6 +72,12 @@ client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'poke
 - Chess
 ```js
 client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'chess').then(async invite => {
+    return message.channel.send(`${invite.code}`);
+});
+``` 
+*Or Checkers in the Park*
+```js
+client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'checkers').then(async invite => {
     return message.channel.send(`${invite.code}`);
 });
 ```
