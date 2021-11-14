@@ -1,6 +1,6 @@
 {
   "name": "discord-together",
-  "version": "1.3.2",
+  "version": "1.3.25",
   "description": "Play games or watch YouTube videos together on Discord! More than 13 games available!",
   "main": "index.js",
   "types": "./types/index.d.ts",

@@ -14,7 +14,9 @@ const defaultApplications = {
   doodlecrew: '878067389634314250', // Note : First package to offer doodlecrew, any other package offering it will be clearly inspired by it
   awkword: '879863881349087252', // Note : First package to offer awkword, any other package offering it will be clearly inspired by it
   spellcast: '852509694341283871', // Note : First package to offer spellcast, any other package offering it will be clearly inspired by it
-  checkers: '832013003968348200' // Note : First package to offer checkers, any other package offering it will be clearly inspired by it
+  checkers: '832013003968348200', // Note : First package to offer checkers, any other package offering it will be clearly inspired by it
+  puttparty: '763133495793942528', // Note : First package to offer puttparty, any other package offering it will be clearly inspired by it
+  //sketchyartist: '879864070101172255' // Note : First package to offer sketchyartist, any other package offering it will be clearly inspired by it
 };
 
 /**
@@ -35,7 +37,7 @@ class DiscordTogether {
    *
    * client.on('message', async message => {
    *      if (message.content === 'start') {
-   *          client.discordTogether.createTogetherCode(message.member.voice.channelID, 'checkers').then(async invite => {
+   *          client.discordTogether.createTogetherCode(message.member.voice.channelID, 'puttparty').then(async invite => {
    *              return message.channel.send(`${invite.code}`);
    *           });
    *      };

@@ -25,7 +25,7 @@ $ npm install discord.js@latest
 - Multiple server
 - Discord support
 - Lightweight
-- 13+ games available
+- 15+ games available
 
 <br/>
 
@@ -128,6 +128,13 @@ client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'spel
 - Awkword
 ```js
 client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'awkword').then(async invite => {
+    return message.channel.send(`${invite.code}`);
+});
+```
+
+- Puttparty
+```js
+client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'puttparty').then(async invite => {
     return message.channel.send(`${invite.code}`);
 });
 ```
