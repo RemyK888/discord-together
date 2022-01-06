@@ -73,21 +73,31 @@ class DiscordTogether {
    * });
    * @returns {Promise<{ code: string; }>}
    */
-  async createTogetherCode(voiceChannelId, option) {
-    /**
-     * @param {string} code The invite link (only use the blue link)
-     */
+  
+   /**
+    * @param {String} voiceChannelId
+    * @param {String} gameName
+    * @param {{maxAge: Number, maxUses: Number}=} options
+    * @returns {{code: String}} Invite link to the game (only use the blue link)
+    */
+  async createTogetherCode(voiceChannelId, gameName, options) {
     let returnData = {
       code: 'none',
     };
-    if (option && this.applications[option.toLowerCase()]) {
-      let applicationID = this.applications[option.toLowerCase()];
+    if (gameName && this.applications[gameName.toLowerCase()]) {
+      let applicationID = this.applications[gameName.toLowerCase()];
+      
+      if (options.maxAge > 168) throw new Error('The maxAge cannot be more than 168 Hours (7 days) !');
+      if (0 > options.maxAge) throw new Error('The maxAge cannot be a negative value !');
+      if (options.maxUses > 100) throw new Error('If you want to make an invite with uses more than 100 members, you need not give a value.');
+      if (0 > options.maxUses) throw new Error('The maxUses cannot be a negative value !');
+      
       try {
         await fetch(`https://discord.com/api/v8/channels/${voiceChannelId}/invites`, {
           method: 'POST',
           body: JSON.stringify({
-            max_age: 86400,
-            max_uses: 0,
+            max_age: options.maxAge === undefined ? 24 * 3600 : options.maxAge * 3600,
+            max_uses: options.maxUses === undefined ? 0 : options.maxUses,
             target_application_id: applicationID,
             target_type: 2,
             temporary: false,
