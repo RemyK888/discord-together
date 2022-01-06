@@ -74,9 +74,13 @@ class DiscordTogether {
    * @returns {Promise<{ code: string; }>}
    */
   
+  /**
+   * @typedef {'youtube' | 'youtubedev' | 'poker' | 'betrayal' | 'fishing' | 'chess' | 'chessdev' | 'lettertile' | 'wordsnack' | 'doodlecrew' | 'awkword' | 'spellcast' | 'checkers' | 'puttparty'} GAMES
+   */
+  
    /**
     * @param {String} voiceChannelId
-    * @param {String} gameName
+    * @param {GAMES} gameName
     * @param {{maxAge: Number, maxUses: Number}=} options
     * @returns {{code: String}} Invite link to the game (only use the blue link)
     */
