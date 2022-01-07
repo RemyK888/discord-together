@@ -91,17 +91,19 @@ class DiscordTogether {
     if (gameName && this.applications[gameName.toLowerCase()]) {
       let applicationID = this.applications[gameName.toLowerCase()];
       
-      if (options.maxAge > 168) throw new Error('The maxAge cannot be more than 168 Hours (7 days) !');
-      if (0 > options.maxAge) throw new Error('The maxAge cannot be a negative value !');
-      if (options.maxUses > 100) throw new Error('If you want to make an invite with uses more than 100 members, you need not give a value.');
-      if (0 > options.maxUses) throw new Error('The maxUses cannot be a negative value !');
+      let
+          maxAgeValue = 24 * 3600,
+          maxUsesValue = 0;
+      
+      if (typeof(options.maxAge) === 'number' && options.maxAge >= 0 && options.maxAge < 168) maxAgeValue = options.maxAge * 3600;
+      if (typeof(options.maxUses) === 'number' && options.maxUses >= 0 && 100 >= options.maxUses) maxUsesValue = options.maxUses;
       
       try {
         await fetch(`https://discord.com/api/v8/channels/${voiceChannelId}/invites`, {
           method: 'POST',
           body: JSON.stringify({
-            max_age: options.maxAge === undefined ? 24 * 3600 : options.maxAge * 3600,
-            max_uses: options.maxUses === undefined ? 0 : options.maxUses,
+            max_age: maxAgeValue,
+            max_uses: maxUsesValue,
             target_application_id: applicationID,
             target_type: 2,
             temporary: false,
