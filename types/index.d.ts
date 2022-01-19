@@ -44,6 +44,7 @@ declare class DiscordTogether<T extends {
         spellcast: string;
         checkers: string;
         puttparty: string;
+        sketchheads: string;
     } & T;
     /**
      * Create a Youtube Together invite code (note: send the invite using markdown link)
@@ -74,6 +75,7 @@ declare class DiscordTogether<T extends {
         spellcast: string;
         checkers: string;
         puttparty: string;
+        sketchheads: string;
     } & T)): Promise<{
         code: string;
     }>;
