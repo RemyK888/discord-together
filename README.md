@@ -139,6 +139,13 @@ client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'putt
 });
 ```
 
+- Sketch Heads
+```js
+client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'sketchheads').then(async invite => {
+    return message.channel.send(`${invite.code}`);
+});
+```
+
 # 📷 Image 
 
 ![Invite link](https://media.discordapp.net/attachments/835896457454026802/837968506846183474/2021-05-01_10h26_17.png)
