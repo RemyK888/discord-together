@@ -17,6 +17,7 @@ const defaultApplications = {
   checkers: '832013003968348200', // Note : First package to offer checkers, any other package offering it will be clearly inspired by it
   puttparty: '763133495793942528', // Note : First package to offer puttparty, any other package offering it will be clearly inspired by it
   sketchheads: '902271654783242291',
+  ocho: '832025144389533716',
   //sketchyartist: '879864070101172255' // Note : First package to offer sketchyartist, any other package offering it will be clearly inspired by it
 };
 
