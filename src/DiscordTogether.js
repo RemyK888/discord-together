@@ -16,6 +16,8 @@ const defaultApplications = {
   spellcast: '852509694341283871', // Note : First package to offer spellcast, any other package offering it will be clearly inspired by it
   checkers: '832013003968348200', // Note : First package to offer checkers, any other package offering it will be clearly inspired by it
   puttparty: '763133495793942528', // Note : First package to offer puttparty, any other package offering it will be clearly inspired by it
+  sketchheads: '902271654783242291',
+  ocho: '832025144389533716',
   //sketchyartist: '879864070101172255' // Note : First package to offer sketchyartist, any other package offering it will be clearly inspired by it
 };
 
@@ -75,7 +77,7 @@ class DiscordTogether {
    */
   
   /**
-   * @typedef {'youtube' | 'youtubedev' | 'poker' | 'betrayal' | 'fishing' | 'chess' | 'chessdev' | 'lettertile' | 'wordsnack' | 'doodlecrew' | 'awkword' | 'spellcast' | 'checkers' | 'puttparty'} GAMES
+   * @typedef {'youtube' | 'youtubedev' | 'poker' | 'betrayal' | 'fishing' | 'chess' | 'chessdev' | 'lettertile' | 'wordsnack' | 'doodlecrew' | 'awkword' | 'spellcast' | 'checkers' | 'puttparty' | 'sketchheads' | 'ocho'} GAMES
    */
   
    /**
