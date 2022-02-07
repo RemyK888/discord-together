@@ -16,7 +16,7 @@ declare class DiscordTogether<T extends {
      *
      * client.on('message', async message => {
      *      if (message.content === 'start') {
-     *          client.discordTogether.createTogetherCode(message.member.voice.channelID, 'youtube').then(async invite => {
+     *          client.discordTogether.createTogetherCode(message.member.voice.channelID, 'skeatchheads').then(async invite => {
      *              return message.channel.send(`${invite.code}`);
      *           });
      *      };
@@ -45,6 +45,7 @@ declare class DiscordTogether<T extends {
         checkers: string;
         puttparty: string;
         sketchheads: string;
+        ocho: string;
     } & T;
     /**
      * Create a Youtube Together invite code (note: send the invite using markdown link)
@@ -53,7 +54,7 @@ declare class DiscordTogether<T extends {
      * @example
      * client.on('message', async message => {
      *      if (message.content === 'start') {
-     *          client.discordTogether.createTogetherCode(message.member.voice.channelID, 'spellcast').then(async invite => {
+     *          client.discordTogether.createTogetherCode(message.member.voice.channelID, 'skeatchheads').then(async invite => {
      *              return message.channel.send(`${invite.code}`); // Click the blue link
      *           });
      *      };
@@ -76,6 +77,7 @@ declare class DiscordTogether<T extends {
         checkers: string;
         puttparty: string;
         sketchheads: string;
+        ocho: string;
     } & T)): Promise<{
         code: string;
     }>;

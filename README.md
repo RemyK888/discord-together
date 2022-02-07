@@ -25,7 +25,7 @@ $ npm install discord.js@latest
 - Multiple server
 - Discord support
 - Lightweight
-- 15+ games available
+- 18+ games available
 
 <br/>
 
@@ -34,15 +34,15 @@ This is a simple example of code using this package.
 
 ```js
 const Discord = require('discord.js');
-const client = new Discord.Client();
+const client = new Discord.Client({ intents: [Discord.Intents.FLAGS.GUILDS, Discord.Intents.FLAGS.GUILD_MESSAGES] });
 const { DiscordTogether } = require('discord-together');
 
 client.discordTogether = new DiscordTogether(client);
 
-client.on('messageCreate', async message => { // 'message' for Discord.js v12
+client.on('messageCreate', async message => {
     if (message.content === 'start') {
         if(message.member.voice.channel) {
-            client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'doodlecrew').then(async invite => {
+            client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'sketchheads').then(async invite => {
                 return message.channel.send(`${invite.code}`);
             });
         };
@@ -139,9 +139,16 @@ client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'putt
 });
 ```
 
-- Sketch Heads
+- Sketchheads
 ```js
 client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'sketchheads').then(async invite => {
+    return message.channel.send(`${invite.code}`);
+});
+```
+
+- Ocho
+```js
+client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'ocho').then(async invite => {
     return message.channel.send(`${invite.code}`);
 });
 ```
