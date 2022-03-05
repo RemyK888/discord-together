@@ -37,11 +37,13 @@ class DiscordTogether {
    *
    * client.discordTogether = new DiscordTogether(client);
    *
-   * client.on('message', async message => {
+   * client.on('messageCreate', async message => {
    *      if (message.content === 'start') {
+   *         if(message.member.voice.channel) {
    *          client.discordTogether.createTogetherCode(message.member.voice.channelID, 'puttparty').then(async invite => {
    *              return message.channel.send(`${invite.code}`);
    *           });
+   *         };
    *      };
    * });
    *
@@ -66,11 +68,13 @@ class DiscordTogether {
    * @param {string} voiceChannelId
    * @param {keyof (defaultApplications & T)} option
    * @example
-   * client.on('message', async message => {
+   * client.on('messageCreate', async message => {
    *      if (message.content === 'start') {
+   *         if(message.member.voice.channel) {
    *          client.discordTogether.createTogetherCode(message.member.voice.channelID, 'youtube').then(async invite => {
    *              return message.channel.send(`${invite.code}`); // Click the blue link
    *           });
+   *         };
    *      };
    * });
    * @returns {Promise<{ code: string; }>}
