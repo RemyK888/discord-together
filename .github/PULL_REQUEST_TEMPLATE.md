@@ -22,7 +22,7 @@ Please describe the tests that you ran to verify your changes. Provide instructi
 
 **Test Configuration**:
 * Operating system:
-* Gdd.Js version:
+* DJS version:
 * Node version:
 * NPM version:
 
