@@ -15,3 +15,4 @@ client.on('messageCreate', async message => {
 });
 
 client.login('Discord bot token');
+// yes
