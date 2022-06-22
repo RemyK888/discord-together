@@ -5,16 +5,16 @@ declare class DiscordTogether<T extends {
 }> {
     /**
      * Create a new YoutubeTogether
-     * @param {Client} client Discord.Client
+     * @param {Client} client Discord.js Client
      * @param {T} applications
      * @example
      * const Discord = require('discord.js');
-     * const client = new Discord.Client();
+     * const client = new Discord.Client({ intents: [Discord.GatewayIntentBits.Guilds, Discord.GatewayIntentBits.GuildMessages, Discord.GatewayIntentBits.MessageContent] });
      * const { DiscordTogether } = require('discord-together');
      *
      * client.discordTogether = new DiscordTogether(client);
      *
-     * client.on('message', async message => {
+     * client.on('messageCreate', async message => {
      *      if (message.content === 'start') {
      *          client.discordTogether.createTogetherCode(message.member.voice.channelID, 'skeatchheads').then(async invite => {
      *              return message.channel.send(`${invite.code}`);
@@ -26,7 +26,7 @@ declare class DiscordTogether<T extends {
      */
     constructor(client: Client, applications?: T);
     /**
-     * Discord.Client
+     * Discord.js Client
      */
     client: string;
     applications: {
@@ -52,9 +52,9 @@ declare class DiscordTogether<T extends {
      * @param {string} voiceChannelId
      * @param {keyof (defaultApplications & T)} option
      * @example
-     * client.on('message', async message => {
+     * client.on('messageCreate', async message => {
      *      if (message.content === 'start') {
-     *          client.discordTogether.createTogetherCode(message.member.voice.channelID, 'skeatchheads').then(async invite => {
+     *          client.discordTogether.createTogetherCode(message.member.voice.channelId, 'skeatchheads').then(async invite => {
      *              return message.channel.send(`${invite.code}`); // Click the blue link
      *           });
      *      };
