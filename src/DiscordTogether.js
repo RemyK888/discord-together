@@ -31,16 +31,22 @@ class DiscordTogether {
    * @param {Client} client Discord.js Client
    * @param {T} applications
    * @example
-   * const Discord = require('discord.js');
-   * const client = new Discord.Client({ intents: [Discord.GatewayIntentBits.Guilds, Discord.GatewayIntentBits.GuildMessages, Discord.GatewayIntentBits.MessageContent });
+   * const { GatewayIntentBits, Client } = require('discord.js');
+   * const client = new Discord.Client({ intents: [Discord.GatewayIntentBits.Guilds] });
    * const { DiscordTogether } = require('discord-together');
    *
    * client.discordTogether = new DiscordTogether(client);
    *
-   * client.on('messageCreate', async message => {
-   *      if (message.content === 'start') {
-   *          client.discordTogether.createTogetherCode(message.member.voice.channelId, 'puttparty').then(async invite => {
-   *              return message.reply(`${invite.code}`);
+   *
+   *
+   * client.on('interactionCreate', async interaction => {
+   *      if (!interaction.isChatInputCommand()) return;
+   *      
+   *      const { commandName } = interaction;
+   *
+   *      if (commandName === 'start') {
+   *          client.discordTogether.createTogetherCode(interaction.member.voice.channelId, 'puttparty').then(async invite => {
+   *              return interaction.reply(`${invite.code}`);
    *           });
    *      };
    * });
@@ -66,10 +72,14 @@ class DiscordTogether {
    * @param {string} voiceChannelId
    * @param {keyof (defaultApplications & T)} option
    * @example
-   * client.on('messageCreate', async message => {
-   *      if (message.content === 'start') {
-   *          client.discordTogether.createTogetherCode(message.member.voice.channelId, 'youtube').then(async invite => {
-   *              return message.reply(`${invite.code}`); // Click the blue link
+   * client.on('interactionCreate', async interaction => {
+   *      if (!interaction.isChatInputCommand()) return;
+   *
+   *      const { commandName } = interaction
+   *
+   *      if (commandName === 'start') {
+   *          client.discordTogether.createTogetherCode(interaction.member.voice.channelId, 'youtube').then(async invite => {
+   *              return interaction.reply(`${invite.code}`); // Click the blue link
    *           });
    *      };
    * });
