@@ -33,17 +33,21 @@ $ npm install discord.js@latest
 This is a simple example of code using this package.
 
 ```js
-const Discord = require('discord.js');
-const client = new Discord.Client({ intents: [Discord.GatewayIntentBits.Guilds, Discord.GatewayIntentBits.GuildMessages, Discord.GatewayIntentBits.MessageContent] });
+const { GatewayIntentBits, Client, SlashCommandBuilder, Routes } = require('discord.js');
+const client = new Discord.Client({ intents: [GatewayIntentBits.Guilds] });
 const { DiscordTogether } = require('discord-together');
 
 client.discordTogether = new DiscordTogether(client);
 
-client.on('messageCreate', async message => {
-    if (message.content === 'start') {
-        if(message.member.voice.channel) {
-            client.discordTogether.createTogetherCode(message.member.voice.channelId, 'sketchheads').then(async invite => {
-                return message.reply(`${invite.code}`);
+client.on('interactionCreate', async interaction => {
+    if (!interaction.isChatInputCommand()) return;
+    
+    const { commandName } = interaction;
+    
+    if (commandName === 'start') {
+        if(interaction.member.voice.channel) {
+            client.discordTogether.createTogetherCode(interaction.member.voice.channelId, 'sketchheads').then(async invite => {
+                return interaction.reply(`${invite.code}`);
             });
         };
     };
@@ -56,100 +60,101 @@ client.login('your Discord bot token');
 # 🔧 Options
 - Youtube
 ```js
-client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'youtube').then(async invite => {
-    return message.reply(`${invite.code}`);
+client.discordTogether.createTogetherCode(interaction.member.voice.channel.id, 'youtube').then(async invite => {
+    return interaction.reply(`${invite.code}`);
 });
 ```
 You can also choose the development version of YouTube, use: `youtubeDev`.
 
 - Poker
 ```js
-client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'poker').then(async invite => {
-    return message.reply(`${invite.code}`);
+client.discordTogether.createTogetherCode(interaction.member.voice.channel.id, 'poker').then(async invite => {
+    return interaction.reply(`${invite.code}`);
 });
 ```
 
 - Chess
 ```js
-client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'chess').then(async invite => {
-    return message.reply(`${invite.code}`);
+client.discordTogether.createTogetherCode(interaction.member.voice.channel.id, 'chess').then(async invite => {
+    return interaction.reply(`${invite.code}`);
 });
 ``` 
 *Or Checkers in the Park*
 ```js
-client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'checkers').then(async invite => {
-    return message.reply(`${invite.code}`);
+client.discordTogether.createTogetherCode(interaction.member.voice.channel.id, 'checkers').then(async invite => {
+    return interaction.reply(`${invite.code}`);
+});
 });
 ```
 You can also choose the development version of chess, use: `chessDev`.
 
 - Betrayal
 ```js
-client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'betrayal').then(async invite => {
-    return message.reply(`${invite.code}`);
+client.discordTogether.createTogetherCode(interaction.member.voice.channel.id, 'betrayal').then(async invite => {
+    return interaction.reply(`${invite.code}`);
 });
 ```
 
 - Fishington
 ```js
-client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'fishing').then(async invite => {
-    return message.reply(`${invite.code}`);
+client.discordTogether.createTogetherCode(interaction.member.voice.channel.id, 'fishing').then(async invite => {
+    return interaction.reply(`${invite.code}`);
 });
 ```
 
 - Letter Tile
 ```js
-client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'lettertile').then(async invite => {
-    return message.reply(`${invite.code}`);
+client.discordTogether.createTogetherCode(interaction.member.voice.channel.id, 'lettertile').then(async invite => {
+    return interaction.reply(`${invite.code}`);
 });
 ```
 
 - Words Snack
 ```js
-client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'wordsnack').then(async invite => {
-    return message.reply(`${invite.code}`);
+client.discordTogether.createTogetherCode(interaction.member.voice.channel.id, 'wordsnack').then(async invite => {
+    return interaction.reply(`${invite.code}`);
 });
 ```
 
 - Doodle Crew
 ```js
-client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'doodlecrew').then(async invite => {
-    return message.reply(`${invite.code}`);
+client.discordTogether.createTogetherCode(interaction.member.voice.channel.id, 'doodlecrew').then(async invite => {
+    return interaction.reply(`${invite.code}`);
 });
 ```
 
 - SpellCast
 ```js
-client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'spellcast').then(async invite => {
-    return message.reply(`${invite.code}`);
+client.discordTogether.createTogetherCode(interaction.member.voice.channel.id, 'spellcast').then(async invite => {
+    return interaction.reply(`${invite.code}`);
 });
 ```
 
 - Awkword
 ```js
-client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'awkword').then(async invite => {
-    return message.reply(`${invite.code}`);
+client.discordTogether.createTogetherCode(interaction.member.voice.channel.id, 'awkword').then(async invite => {
+    return interaction.reply(`${invite.code}`);
 });
 ```
 
 - Puttparty
 ```js
-client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'puttparty').then(async invite => {
-    return message.reply(`${invite.code}`);
+client.discordTogether.createTogetherCode(interaction.member.voice.channel.id, 'puttparty').then(async invite => {
+    return interaction.reply(`${invite.code}`);
 });
 ```
 
 - Sketchheads
 ```js
-client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'sketchheads').then(async invite => {
-    return message.reply(`${invite.code}`);
+client.discordTogether.createTogetherCode(interaction.member.voice.channel.id, 'sketchheads').then(async invite => {
+    return interaction.reply(`${invite.code}`);
 });
 ```
 
 - Ocho
 ```js
-client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'ocho').then(async invite => {
-    return message.reply(`${invite.code}`);
+client.discordTogether.createTogetherCode(interaction.member.voice.channel.id, 'ocho').then(async invite => {
+    return interaction.reply(`${invite.code}`);
 });
 ```
 
