@@ -28,7 +28,7 @@ const defaultApplications = {
 class DiscordTogether {
   /**
    * Create a new YoutubeTogether
-   * @param {Client} client Discord.Client
+   * @param {Client} client Discord.js Client
    * @param {T} applications
    * @example
    * const Discord = require('discord.js');
