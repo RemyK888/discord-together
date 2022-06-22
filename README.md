@@ -16,7 +16,7 @@ $ npm install discord-together@latest
 
 ## Install [discord.js](https://www.npmjs.com/package/discord.js)
 ```
-$ npm install discord.js@latest
+$ npm install discord.js@dev
 ```
 *Note: supports all versions of Discord.js*
 
@@ -34,7 +34,7 @@ This is a simple example of code using this package.
 
 ```js
 const Discord = require('discord.js');
-const client = new Discord.Client({ intents: [Discord.Intents.FLAGS.GUILDS, Discord.Intents.FLAGS.GUILD_MESSAGES] });
+const client = new Discord.Client({ intents: [Discord.GatewayIntentBits.Guilds, Discord.GatewayIntentBits.GuildMessages, Discord.GatewayIntentBits.MessageContent] });
 const { DiscordTogether } = require('discord-together');
 
 client.discordTogether = new DiscordTogether(client);
