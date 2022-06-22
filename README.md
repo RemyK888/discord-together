@@ -33,7 +33,7 @@ $ npm install discord.js@latest
 This is a simple example of code using this package.
 
 ```js
-const { GatewayIntentBits, Client, SlashCommandBuilder, Routes } = require('discord.js');
+const { GatewayIntentBits, Client } = require('discord.js');
 const client = new Discord.Client({ intents: [GatewayIntentBits.Guilds] });
 const { DiscordTogether } = require('discord-together');
 
