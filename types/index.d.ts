@@ -46,6 +46,8 @@ declare class DiscordTogether<T extends {
         puttparty: string;
         sketchheads: string;
         ocho: string;
+        landio: string;
+        bobble: string;
     } & T;
     /**
      * Create a Youtube Together invite code (note: send the invite using markdown link)
@@ -78,6 +80,8 @@ declare class DiscordTogether<T extends {
         puttparty: string;
         sketchheads: string;
         ocho: string;
+        landio: string;
+        bobble: string;
     } & T)): Promise<{
         code: string;
     }>;
