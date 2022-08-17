@@ -25,7 +25,8 @@ $ npm install discord.js@latest
 - Multiple server
 - Discord support
 - Lightweight
-- 18+ games available
+- Works with all DJS versions
+- 22+ games available
 
 <br/>
 
@@ -152,6 +153,31 @@ client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'ocho
     return message.channel.send(`${invite.code}`);
 });
 ```
+
+# 🔨 All available games
+ - `youtube`
+ - `youtubedev`
+ - `poker`
+ - `betrayal`
+ - `fishing`
+ - `chess`
+ - `chessdev`
+ - `lettertile`
+ - `wordsnack`
+ - `doodlecrew`
+ - `awkword`
+ - `spellcast`
+ - `checkers`
+ - `puttparty`
+ - `sketchheads`
+ - `ocho`
+ - `puttpartyqa`
+ - `sketchyartist`
+ - `land`
+ - `meme`
+ - `askaway`
+ - `bobble`
+
 
 # 📷 Image 
 

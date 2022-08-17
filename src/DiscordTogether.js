@@ -18,7 +18,12 @@ const defaultApplications = {
   puttparty: '763133495793942528', // Note : First package to offer puttparty, any other package offering it will be clearly inspired by it
   sketchheads: '902271654783242291', // Note : First package to offer sketchheads any other package offering it will be clearly inspired by it
   ocho: '832025144389533716', // Note : First package to offer ocho any other package offering it will be clearly inspired by it
-  //sketchyartist: '879864070101172255' // Note : First package to offer sketchyartist, any other package offering it will be clearly inspired by it
+  puttpartyqa: '945748195256979606',
+  sketchyartist: '879864070101172255', // Note : First package to offer sketchyartist, any other package offering it will be clearly inspired by it
+  land: '903769130790969345',
+  meme: '950505761862189096',
+  askaway: '976052223358406656',
+  bobble: '947957217959759964',
 };
 
 /**
@@ -85,7 +90,7 @@ class DiscordTogether {
     if (option && this.applications[option.toLowerCase()]) {
       let applicationID = this.applications[option.toLowerCase()];
       try {
-        await fetch(`https://discord.com/api/v8/channels/${voiceChannelId}/invites`, {
+        await fetch(`https://discord.com/api/v10/channels/${voiceChannelId}/invites`, {
           method: 'POST',
           body: JSON.stringify({
             max_age: 86400,
