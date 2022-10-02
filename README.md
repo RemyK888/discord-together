@@ -112,23 +112,9 @@ client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'word
 });
 ```
 
-- Doodle Crew
-```js
-client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'doodlecrew').then(async invite => {
-    return message.channel.send(`${invite.code}`);
-});
-```
-
 - SpellCast
 ```js
 client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'spellcast').then(async invite => {
-    return message.channel.send(`${invite.code}`);
-});
-```
-
-- Awkword
-```js
-client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'awkword').then(async invite => {
     return message.channel.send(`${invite.code}`);
 });
 ```
@@ -164,15 +150,12 @@ client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'ocho
  - `chessdev`
  - `lettertile`
  - `wordsnack`
- - `doodlecrew`
- - `awkword`
  - `spellcast`
  - `checkers`
  - `puttparty`
  - `sketchheads`
  - `ocho`
  - `puttpartyqa`
- - `sketchyartist`
  - `land`
  - `meme`
  - `askaway`
