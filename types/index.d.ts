@@ -45,7 +45,7 @@ declare class DiscordTogether<T extends {
         checkers: string;
         puttparty: string;
         sketchheads: string;
-        ocho: string;
+        blazing8s: string;
         puttpartyqa: string;
         sketchyartist: string;
         land: string;
@@ -83,7 +83,7 @@ declare class DiscordTogether<T extends {
         checkers: string;
         puttparty: string;
         sketchheads: string;
-        ocho: string;
+        blazing8s: string;
         puttpartyqa: string;
         sketchyartist: string;
         land: string;

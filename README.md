@@ -133,9 +133,9 @@ client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'sket
 });
 ```
 
-- Ocho
+- Blazing 8s
 ```js
-client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'ocho').then(async invite => {
+client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'blazing8s').then(async invite => {
     return message.channel.send(`${invite.code}`);
 });
 ```
@@ -154,7 +154,7 @@ client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'ocho
  - `checkers`
  - `puttparty`
  - `sketchheads`
- - `ocho`
+ - `blazing8s`
  - `puttpartyqa`
  - `land`
  - `meme`

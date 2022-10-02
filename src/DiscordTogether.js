@@ -15,7 +15,7 @@ const defaultApplications = {
   checkers: '832013003968348200', // Note : First package to offer checkers, any other package offering it will be clearly inspired by it
   puttparty: '763133495793942528', // Note : First package to offer puttparty, any other package offering it will be clearly inspired by it
   sketchheads: '902271654783242291', // Note : First package to offer sketchheads any other package offering it will be clearly inspired by it
-  ocho: '832025144389533716', // Note : First package to offer ocho any other package offering it will be clearly inspired by it
+  blazing8s: '832025144389533716', // Note : First package to offer blazing8s any other package offering it will be clearly inspired by it
   puttpartyqa: '945748195256979606',
   land: '903769130790969345',
   meme: '950505761862189096',
