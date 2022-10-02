@@ -18,7 +18,7 @@ $ npm install discord-together@latest
 ```
 $ npm install discord.js@latest
 ```
-*Note: supports all versions of Discord.js*
+*Note: Supports all versions of Discord.js*
 
 # 🔑 Features
 - Easy to use
@@ -112,23 +112,9 @@ client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'word
 });
 ```
 
-- Doodle Crew
-```js
-client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'doodlecrew').then(async invite => {
-    return message.channel.send(`${invite.code}`);
-});
-```
-
 - SpellCast
 ```js
 client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'spellcast').then(async invite => {
-    return message.channel.send(`${invite.code}`);
-});
-```
-
-- Awkword
-```js
-client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'awkword').then(async invite => {
     return message.channel.send(`${invite.code}`);
 });
 ```
@@ -147,9 +133,9 @@ client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'sket
 });
 ```
 
-- Ocho
+- Blazing 8s
 ```js
-client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'ocho').then(async invite => {
+client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'blazing8s').then(async invite => {
     return message.channel.send(`${invite.code}`);
 });
 ```
@@ -164,19 +150,17 @@ client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'ocho
  - `chessdev`
  - `lettertile`
  - `wordsnack`
- - `doodlecrew`
- - `awkword`
  - `spellcast`
  - `checkers`
  - `puttparty`
  - `sketchheads`
- - `ocho`
+ - `blazing8s`
  - `puttpartyqa`
- - `sketchyartist`
  - `land`
  - `meme`
  - `askaway`
  - `bobble`
+ - `bashout`
 
 
 # 📷 Image 
@@ -194,7 +178,7 @@ client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'ocho
 # 🌌 Example of bots made with Discord Together
 - [Discord Together Bot](https://github.com/RemyK888/discord-together-bot) by [RemyK](https://github.com/RemyK888)
 - [Lambdapse](https://github.com/lambdagit101/lambdapse) by [Lambdaguy101](https://github.com/lambdagit101)
-
+- [Discord Activities](https://github.com/kyrea/discord-activities) by [Aeryk](https://github.com/kyrea)
 # 🚀 Others
 
 ### **Thanks a lot to [3chospirits](https://github.com/3chospirits) who made the typescript declaration file !**
