@@ -160,6 +160,7 @@ client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'blaz
  - `meme`
  - `askaway`
  - `bobble`
+ - `bashout`
 
 
 # 📷 Image 
