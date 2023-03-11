@@ -24,6 +24,7 @@ const defaultApplications = {
   meme: '950505761862189096',
   askaway: '976052223358406656',
   bobble: '947957217959759964',
+  garticphone: '1007373802981822582',
 };
 
 /**
