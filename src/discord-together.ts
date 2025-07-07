@@ -3,25 +3,24 @@ import { ObjectKeys } from './types/object-keys';
 import { DefaultApplicationsConfig } from './applications/config';
 import { ApplicationConfig, ApplicationInviteCodeResponse } from './applications/types';
 
-export class DiscordTogether {
-  private applications: ApplicationConfig;
+export class DiscordTogether<AC extends ApplicationConfig = typeof DefaultApplicationsConfig> {
+  private applications: AC;
   private client: Client;
 
-  constructor(client: Client, applications: ApplicationConfig = DefaultApplicationsConfig) {
-    /**
-     * Discord.Client
-     */
+  /**
+   *
+   * @param client needs for token
+   * @param applications your config for applications that you want to use
+   */
+  constructor(client: Client, applications: AC = DefaultApplicationsConfig as unknown as AC) {
     this.client = client;
-    /**
-     * Discord Together applications
-     */
-    this.applications = applications
+    this.applications = applications;
   }
 
   /**
    *
-   * @param channelId - snowflake
-   * @param option - is a key from constructor
+   * @param channelId
+   * @param application - the application key from applications config that you passed in (autocomplete)
    * @example
    * client.on('message', async message => {
    *      if (message.content === 'start') {
@@ -34,9 +33,9 @@ export class DiscordTogether {
    */
   public async createTogetherCode(
     channelId: Snowflake,
-    option: ObjectKeys<typeof this.applications>,
+    application: ObjectKeys<AC>,
   ): Promise<{ code: string; invite: string }> {
-    const appId = this.applications[option];
+    const appId = this.applications[application];
     try {
       const invite = await this.fetchApplicationInviteCode(appId, channelId);
       return { code: invite.code, invite: `https://discord.com/invite/${invite.code}` };
@@ -78,12 +77,38 @@ export class DiscordTogether {
 }
 
 /**
+ * FACTORY METHOD
  *
- * @param client
- * @param applications
- * @returns createTogetherCode function
+ * @param client needs for token
+ * @param applications your config for applications that you want to use
+ * @returns link to createTogetherCode from instance
+ *
+ * @example with default config
+ * ```ts
+ * import { Client } from "discord.js"
+ * import { createDiscordTogether } from "discord-together"
+ *
+ * const client = new Client({
+ *   intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildInvites, GatewayIntentBits.MessageContent],
+ * });
+ *
+ * const createTogetherCode = createDiscordTogether(client);
+ *```
+ *
+ * @example with custom config
+ * ```ts
+ * import { Client } from "discord.js"
+ * import { createDiscordTogether, createApplicationConfig, DefaultApplicationsConfig } from "discord-together"
+ *
+ * const client = new Client({
+ *   intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildInvites, GatewayIntentBits.MessageContent],
+ * });
+ *
+ * const applicationConfig = createApplicationConfig({monopoly: "snowflake"}, {extends: [DefaultApplicationsConfig]})
+ * const createTogetherCode = createDiscordTogether(client);
+ *```
  */
-export function createDiscordTogether(client: Client, applications: ApplicationConfig) {
+export function createDiscordTogether(client: Client, applications: ApplicationConfig = DefaultApplicationsConfig) {
   const instance = new DiscordTogether(client, applications);
-  return [instance.createTogetherCode, instance];
+  return instance.createTogetherCode;
 }
