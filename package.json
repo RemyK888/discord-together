@@ -44,6 +44,6 @@
     "discord.js": "^14.2.0"
   },
   "peerDependencies": {
-    "discord.js": "^14.8.0"
+    "discord.js": "^14.2.0"
   }
 }
