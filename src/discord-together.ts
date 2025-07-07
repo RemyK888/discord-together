@@ -15,7 +15,7 @@ export class DiscordTogether {
     /**
      * Discord Together applications
      */
-    this.applications = { ...DefaultApplicationsConfig, ...applications };
+    this.applications = applications
   }
 
   /**
