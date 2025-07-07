@@ -133,7 +133,7 @@ const createTogetherCode = createDiscordTogether(client, applications)
 
 *Note: This package is not affiliated with Discord Inc. or YouTube Inc.*
 
-If you have any problems, you can contact: `RemyK#3876`.
+If you have any problems, you can contact: [remyk](https://discord.com/users/509397999924019211).
 **Discord server:** [Server Link](https://discord.gg/GK8jFXkybz)
 
 [**Github repository**](https://github.com/RemyK888/discord-together)
