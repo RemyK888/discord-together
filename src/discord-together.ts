@@ -76,3 +76,14 @@ export class DiscordTogether {
     }
   }
 }
+
+/**
+ *
+ * @param client
+ * @param applications
+ * @returns createTogetherCode function
+ */
+export function createDiscordTogether(client: Client, applications: ApplicationConfig) {
+  const instance = new DiscordTogether(client, applications);
+  return [instance.createTogetherCode, instance];
+}
