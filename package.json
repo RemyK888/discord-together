@@ -11,7 +11,6 @@
     "format": "prettier --write \"src/**/*.{js,ts}\"",
     "build": "npx tsc --build"
   },
-  "packageManager": "yarn@1.22.22",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/RemyK888/discord-together.git"
@@ -37,13 +36,14 @@
     "url": "https://github.com/RemyK888/discord-together/issues"
   },
   "homepage": "https://github.com/RemyK888/discord-together#readme",
-  "dependencies": {
-    "discord.js": "^14.2.0"
-  },
   "devDependencies": {
     "@types/node": "^16.3.1",
     "check-dts": "^0.5.2",
     "prettier": "^2.3.2",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "discord.js": "^14.2.0"
+  },
+  "peerDependencies": {
+    "discord.js": "^14.8.0"
   }
 }
