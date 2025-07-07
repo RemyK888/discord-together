@@ -27,24 +27,26 @@ $ npm install discord.js@latest
 - Lightweight
 - Works with all DJS versions
 - 22+ games available
+- Type safe
 
 <br/>
 
-# 💻 Code example
+# 💻 Basic example
 This is a simple example of code using this package.
 
 ```js
-const Discord = require('discord.js');
-const client = new Discord.Client({ intents: [Discord.Intents.FLAGS.GUILDS, Discord.Intents.FLAGS.GUILD_MESSAGES] });
-const { DiscordTogether } = require('discord-together');
+import { Client } from "discord.js"
+import { DiscordTogether } from "discord-together"
+
+const client = new Client({ intents: [Discord.Intents.FLAGS.GUILDS, Discord.Intents.FLAGS.GUILD_MESSAGES] });
 
 client.discordTogether = new DiscordTogether(client);
 
 client.on('messageCreate', async message => {
     if (message.content === 'start') {
         if(message.member.voice.channel) {
-            client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'sketchheads').then(async invite => {
-                return message.channel.send(`${invite.code}`);
+            client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'sketchheads').then(async res => {
+                return message.channel.send(`${res.invite}`);
             });
         };
     };
@@ -52,107 +54,27 @@ client.on('messageCreate', async message => {
 
 client.login('your Discord bot token');
 ```
+
+# 🥷 Advanced techniques
+
+## Config extend
+
+```ts
+import { createApplicationConfig, DefaultApplicationsConfig } from "discord-together"
+
+// It will return config with DefaultApplicationsConfig and your custom options
+const extendedConfig = createApplicationConfig({monopoly: "snowflake"}, {extends: [DefaultApplicationsConfig]})
+```
+
+## Factory way to create DiscordTogether
+
+```ts
+import { createDiscordTogether } from "discord-together"
+
+// It will return function createTogetherCode from DiscordTogether instance
+const createTogetherCode = createDiscordTogether(client, applications)
+```
 <br/>
-
-# 🔧 Options
-- Youtube
-```js
-client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'youtube').then(async invite => {
-    return message.channel.send(`${invite.code}`);
-});
-```
-You can also choose the development version of YouTube, use: `youtubeDev`.
-
-- Poker
-```js
-client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'poker').then(async invite => {
-    return message.channel.send(`${invite.code}`);
-});
-```
-
-- Chess
-```js
-client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'chess').then(async invite => {
-    return message.channel.send(`${invite.code}`);
-});
-``` 
-*Or Checkers in the Park*
-```js
-client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'checkers').then(async invite => {
-    return message.channel.send(`${invite.code}`);
-});
-```
-You can also choose the development version of chess, use: `chessDev`.
-
-- Betrayal
-```js
-client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'betrayal').then(async invite => {
-    return message.channel.send(`${invite.code}`);
-});
-```
-
-- Fishington
-```js
-client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'fishing').then(async invite => {
-    return message.channel.send(`${invite.code}`);
-});
-```
-
-- Letter Tile
-```js
-client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'lettertile').then(async invite => {
-    return message.channel.send(`${invite.code}`);
-});
-```
-
-- Words Snack
-```js
-client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'wordsnack').then(async invite => {
-    return message.channel.send(`${invite.code}`);
-});
-```
-
-- Doodle Crew
-```js
-client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'doodlecrew').then(async invite => {
-    return message.channel.send(`${invite.code}`);
-});
-```
-
-- SpellCast
-```js
-client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'spellcast').then(async invite => {
-    return message.channel.send(`${invite.code}`);
-});
-```
-
-- Awkword
-```js
-client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'awkword').then(async invite => {
-    return message.channel.send(`${invite.code}`);
-});
-```
-
-- Puttparty
-```js
-client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'puttparty').then(async invite => {
-    return message.channel.send(`${invite.code}`);
-});
-```
-
-- Sketchheads
-```js
-client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'sketchheads').then(async invite => {
-    return message.channel.send(`${invite.code}`);
-});
-```
-
-- Ocho
-```js
-client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'ocho').then(async invite => {
-    return message.channel.send(`${invite.code}`);
-});
-```
 
 # 🔨 All available games
  - `youtube`
@@ -179,7 +101,7 @@ client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'ocho
  - `bobble`
 
 
-# 📷 Image 
+# 📷 Image
 
 ![Invite link](https://media.discordapp.net/attachments/835896457454026802/837968506846183474/2021-05-01_10h26_17.png)
 
@@ -213,5 +135,3 @@ If you have any problems, you can contact: `RemyK#3876`.
 <hr>
 
 ## **Made with ❤ by RemyK**
-
-
