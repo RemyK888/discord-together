@@ -57,13 +57,19 @@ client.login('your Discord bot token');
 
 # 🥷 Advanced techniques
 
+We're admit that you can init discord client yourself and use functions
+
 ## Config extend
 
 ```ts
-import { createApplicationConfig, DefaultApplicationsConfig } from "discord-together"
+import { createApplicationConfig, DefaultApplicationsConfig, DiscordTogether } from "discord-together"
 
 // It will return config with DefaultApplicationsConfig and your custom options
+// If extends is empty or options not passed, it will return only your custom
 const extendedConfig = createApplicationConfig({monopoly: "snowflake"}, {extends: [DefaultApplicationsConfig]})
+
+// You can use your own config here
+const instance = new DiscordTogether(client, extendedConfig)
 ```
 
 ## Factory way to create DiscordTogether
