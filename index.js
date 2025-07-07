@@ -1,4 +1,4 @@
 module.exports = {
-    DiscordTogether: require('./src/DiscordTogether.js'),
-    version: require('./package.json').version
-}
+  DiscordTogether: require('./src/discord-together.js'),
+  version: require('./package.json').version,
+};
