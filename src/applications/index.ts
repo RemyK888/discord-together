@@ -1,3 +1,3 @@
-export * from './config'
-export * from './types'
-export * from './factory'
+export * from './config';
+export * from './types';
+export * from './factory';

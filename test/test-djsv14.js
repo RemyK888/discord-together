@@ -1,18 +1,17 @@
 const Discord = require('discord.js');
-const client = new Discord.Client({ intents: [Discord.GatewayIntentBits.Guilds, Discord.GatewayIntentBits.GuildMessages, Discord.GatewayIntentBits.MessageContent] });
-const { DiscordTogether } = require('../index.js');
+const { DiscordTogether } = require('discord-together');
 
-client.discordTogether = new DiscordTogether(client);
+const client = new Discord.Client({ intents: [Discord.GatewayIntentBits.Guilds, Discord.GatewayIntentBits.GuildMessages, Discord.GatewayIntentBits.MessageContent] });
+const togetherInstance = new DiscordTogether(client);
 
 client.on('messageCreate', async message => { 
     if (message.content === 'start') {
-        console.log('cccc')
         if(message.member.voice.channel) {
-            client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'sketchyartist').then(async invite => { 
-                return message.channel.send(`${invite.code}`); // Click the blue link !
-            });
+            togetherInstance.createTogetherCode(message.member.voice.channel.id, 'chess').then(async res => {
+                return message.channel.send(`${res.invite}`);
+            })
         };
     };
 });
 
-client.login('Discord bot token');
+client.login('TOKEN');

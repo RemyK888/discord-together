@@ -1,143 +1,209 @@
 <p align="center">
-<h1><strong>Discord Together</strong></h1>
-
-[![NPM](https://nodei.co/npm/discord-together.png)](https://nodei.co/npm/discord-together/)
-
-[![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com)
-
-![DL](https://img.shields.io/npm/dt/discord-together?style=for-the-badge)
+  <h1><strong>Discord Together</strong></h1>
+  <a href="https://nodei.co/npm/discord-together/">
+    <img src="https://nodei.co/npm/discord-together.png" alt="NPM">
+  </a>
+  <br/>
+  <a href="https://forthebadge.com">
+    <img src="https://forthebadge.com/images/badges/made-with-javascript.svg" alt="Made with JavaScript">
+  </a>
+  <br/>
+  <img src="https://img.shields.io/npm/dt/discord-together?style=for-the-badge" alt="Downloads">
 </p>
 
-# 🔩 Installation
-## Install [discord-together](https://www.npmjs.com/package/discord-together)
-```
-$ npm install discord-together@latest
+---
+
+# Discord Together
+
+A simple, type-safe, and lightweight Node.js library to generate Discord Together invite links for over 23+ activities and games, supporting all versions of [discord.js](https://www.npmjs.com/package/discord.js).
+
+---
+
+## 🔩 Installation
+
+### Install [discord-together](https://www.npmjs.com/package/discord-together)
+```sh
+npm install discord-together@latest
 ```
 
-## Install [discord.js](https://www.npmjs.com/package/discord.js)
+### Install [discord.js](https://www.npmjs.com/package/discord.js)
+```sh
+npm install discord.js@latest
 ```
-$ npm install discord.js@latest
-```
-*Note: supports all versions of Discord.js*
+*Supports all versions of Discord.js*
 
-# 🔑 Features
-- Easy to use
-- Multiple server
-- Discord support
-- Lightweight
-- Works with all DJS versions
-- 22+ games available
-- Type safe
+---
 
-<br/>
+## 🔑 Features
 
-# 💻 Basic example
-This is a simple example of code using this package.
+- 🚀 Easy to use
+- 🌐 Multiple server support
+- 🛠️ Works with all Discord.js versions
+- 🎮 23+ games and activities
+- 🪶 Lightweight and type-safe
+- 🤝 Actively maintained
+- 📦 Extendable configuration
+
+---
+
+## 📚 Table of Contents
+
+- [Basic Example](#-basic-example)
+- [API Reference](#-api-reference)
+- [Advanced Usage](#-advanced-usage)
+  - [Custom Application Config](#custom-application-config)
+  - [Factory Usage](#factory-usage)
+- [Available Games](#-all-available-games)
+- [Example Bots](#-example-of-bots-made-with-discord-together)
+- [License & Credits](#-others)
+- [Support](#support)
+
+---
+
+## 💻 Basic Example
+
+A simple example using this package with Discord.js v14+:
 
 ```js
-import { Client } from "discord.js"
-import { DiscordTogether } from "discord-together"
+import { Client, GatewayIntentBits } from 'discord.js';
+import { DiscordTogether } from 'discord-together';
 
-const client = new Client({ intents: [Discord.Intents.FLAGS.GUILDS, Discord.Intents.FLAGS.GUILD_MESSAGES] });
+const client = new Discord.Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });
+const togetherInstance = new DiscordTogether(client);
 
-client.discordTogether = new DiscordTogether(client);
-
-client.on('messageCreate', async message => {
+client.on('messageCreate', async message => { 
     if (message.content === 'start') {
         if(message.member.voice.channel) {
-            client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'sketchheads').then(async res => {
+            togetherInstance.createTogetherCode(message.member.voice.channel.id, 'chess').then(async res => {
                 return message.channel.send(`${res.invite}`);
-            });
+            })
         };
     };
 });
 
-client.login('your Discord bot token');
+client.login('TOKEN');
 ```
 
-# 🥷 Advanced techniques
+---
 
-We're admit that you can init discord client yourself and use functions
+## 📝 API Reference
 
-## Config extend
+### `DiscordTogether` class
+
+#### Constructor
 
 ```ts
-import { createApplicationConfig, DefaultApplicationsConfig, DiscordTogether } from "discord-together"
-
-// It will return config with DefaultApplicationsConfig and your custom options
-// If extends is empty or options not passed, it will return only your custom
-const extendedConfig = createApplicationConfig({monopoly: "snowflake"}, {extends: [DefaultApplicationsConfig]})
-
-// You can use your own config here
-const instance = new DiscordTogether(client, extendedConfig)
+new DiscordTogether(client: Client, applications?: ApplicationConfig)
 ```
+- `client`: Your Discord.js client instance (must be logged in).
+- `applications` (optional): Custom application config. Defaults to built-in games.
 
-## Factory way to create DiscordTogether
+#### Methods
+
+##### `createTogetherCode(channelId: Snowflake, application: string): Promise<{ code: string, invite: string }>`
+- `channelId`: The ID of the voice channel.
+- `application`: The key of the game/activity (see [Available Games](#-all-available-games)).
+- **Returns:** An object with the invite code and the full invite URL.
+
+---
+
+### `createDiscordTogether` factory
 
 ```ts
-import { createDiscordTogether } from "discord-together"
+import { createDiscordTogether } from "discord-together";
 
-// It will return function createTogetherCode from DiscordTogether instance
-const createTogetherCode = createDiscordTogether(client, applications)
+const createTogetherCode = createDiscordTogether(client, applications);
 ```
-<br/>
+- Returns the `createTogetherCode` function directly for functional usage.
 
-# 🔨 All available games
- - `youtube`
- - `youtubedev`
- - `poker`
- - `betrayal`
- - `fishing`
- - `chess`
- - `chessdev`
- - `lettertile`
- - `wordsnack`
- - `doodlecrew`
- - `awkword`
- - `spellcast`
- - `checkers`
- - `puttparty`
- - `sketchheads`
- - `ocho`
- - `puttpartyqa`
- - `sketchyartist`
- - `land`
- - `meme`
- - `askaway`
- - `bobble`
+---
+
+## ⚙️ Advanced Usage
+
+### Custom Application Config
+
+You can extend or override the default games with your own:
+
+```ts
+import { createApplicationConfig, DefaultApplicationsConfig, DiscordTogether } from "discord-together";
+
+// Extend the default config with your own games
+const extendedConfig = createApplicationConfig(
+  { monopoly: "your_snowflake_id" },
+  { extends: [DefaultApplicationsConfig] }
+);
+
+const instance = new DiscordTogether(client, extendedConfig);
+```
+
+### Factory Usage
+
+```ts
+import { createDiscordTogether } from "discord-together";
+
+// Returns the createTogetherCode function
+const createTogetherCode = createDiscordTogether(client, applications);
+```
+
+---
+
+## 🎮 All Available Games
+
+| Key            | Description                |
+|----------------|---------------------------|
+| youtube        | YouTube Together          |
+| youtubedev     | YouTube Dev               |
+| poker          | Poker Night               |
+| betrayal       | Betrayal.io               |
+| fishing        | Fishington.io             |
+| chess          | Chess in the Park         |
+| chessdev       | Chess Dev                 |
+| lettertile     | Letter Tile               |
+| wordsnack      | Word Snack                |
+| doodlecrew     | Doodle Crew               |
+| awkword        | Awkword                   |
+| spellcast      | SpellCast                 |
+| checkers       | Checkers in the Park      |
+| puttparty      | Putt Party                |
+| sketchheads    | Sketch Heads              |
+| ocho           | Ocho                      |
+| puttpartyqa    | Putt Party QA             |
+| sketchyartist  | Sketchy Artist            |
+| land           | Land                      |
+| meme           | Meme                      |
+| askaway        | Ask Away                  |
+| bobble         | Bobble                    |
+| bashout        | Bash Out                  |
+
+---
 
 
-# 📷 Image
+## 🌌 Example of Bots Made with Discord Together
 
-![Invite link](https://media.discordapp.net/attachments/835896457454026802/837968506846183474/2021-05-01_10h26_17.png)
-
-### *Note: you have to click on the BLUE LINK, not the 'Play' button, in order to start the activity !*
-
-<br/>
-
-![YouTube Together](https://media.discordapp.net/attachments/835896457454026802/837968510843093033/2021-05-01_10h27_31.png?width=1229&height=676)
-
-<br/>
-
-# 🌌 Example of bots made with Discord Together
 - [Discord Together Bot](https://github.com/RemyK888/discord-together-bot) by [RemyK](https://github.com/RemyK888)
 - [Lambdapse](https://github.com/lambdagit101/lambdapse) by [Lambdaguy101](https://github.com/lambdagit101)
 
-# 🚀 Others
+---
 
-### **Thanks a lot to [3chospirits](https://github.com/3chospirits) who made the typescript declaration file !**
+## 📝 License & Credits
 
-*I would also like to thank all the amazing members of my server who are helping to make this project happen !*
+- **License:** MIT
+- **Author:** [RemyK](https://github.com/RemyK888)
+- **Special thanks:** [Ayomits](https://github.com/Ayomits) for the TypeScript rewrite, and all contributors and community members!
 
-**This package is under MIT license.**
+*This package is not affiliated with Discord Inc. or YouTube Inc.*
 
-*Note: This package is not affiliated with Discord Inc. or YouTube Inc.*
+---
 
-If you have any problems, you can contact: [remyk](https://discord.com/users/509397999924019211).
-**Discord server:** [Server Link](https://discord.gg/GK8jFXkybz)
+## 💬 Support
 
-[**Github repository**](https://github.com/RemyK888/discord-together)
+If you have any problems or questions, feel free to contact [RemyK](https://discord.com/users/509397999924019211).
+
+- **Discord server:** [Server Link](https://discord.gg/GK8jFXkybz)
+- **GitHub repository:** [discord-together](https://github.com/RemyK888/discord-together)
+
+---
 
 <hr>
 
-## **Made with ❤ by RemyK**
+<p align="center"><b>Made with ❤ by RemyK</b></p>

@@ -1,10 +1,6 @@
-import { DefaultApplicationsConfig } from './config';
 import { ApplicationConfig } from './types';
 
 interface CreateApplicationConfigOptions<EXT extends ApplicationConfig[]> {
-  /**
-   * Array of Application configs to merge with custom
-   */
   extends: EXT;
 }
 
@@ -19,17 +15,7 @@ type CreateApplicationConfigReturn<AC extends ApplicationConfig, EXT extends App
   : AC & UnionToIntersection<EXT[number]>;
 
 /**
- *
- * @param config - your custom config that you want to use
- * @param options
- * @example
- *
- * import { createApplicationConfig, DefaultApplicationsConfig } from "discord-together"
- *
- * const configWithoutExtend = createApplicationConfig({monopoly: "snowflake"})
- * const configWithExtend = createApplicationConfig({sigame: "snowflake"}, {extends: [configWithoutExtend, DefaultApplicationsConfig]})
- *
- * @returns { ApplicationConfig }
+ * Create a new application config, optionally extending others.
  */
 export function createApplicationConfig<AC extends ApplicationConfig, EXT extends ApplicationConfig[] = []>(
   config: AC,
