@@ -62,13 +62,3 @@ export class DiscordTogether<AC extends ApplicationConfig = typeof DefaultApplic
     return res;
   }
 }
-
-/**
- * Factory method to create a Together code generator.
- * @param client Discord.js client instance
- * @param applications Custom applications config (optional)
- */
-export function createDiscordTogether(client: Client, applications: ApplicationConfig = DefaultApplicationsConfig) {
-  const instance = new DiscordTogether(client, applications);
-  return instance.createTogetherCode;
-}
