@@ -1,5 +1,5 @@
 import { Client, Snowflake } from 'discord.js';
-import { ObjectKeys } from './types/object-keys';
+import { ObjectKeys } from './types/objectKeys';
 import { DefaultApplicationsConfig } from './applications/config';
 import { ApplicationConfig, ApplicationInviteCodeResponse } from './applications/types';
 
@@ -61,14 +61,4 @@ export class DiscordTogether<AC extends ApplicationConfig = typeof DefaultApplic
     if (Number(res.code) === 50013) console.warn('Your bot lacks permissions to perform that action');
     return res;
   }
-}
-
-/**
- * Factory method to create a Together code generator.
- * @param client Discord.js client instance
- * @param applications Custom applications config (optional)
- */
-export function createDiscordTogether(client: Client, applications: ApplicationConfig = DefaultApplicationsConfig) {
-  const instance = new DiscordTogether(client, applications);
-  return instance.createTogetherCode;
 }
