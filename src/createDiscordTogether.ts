@@ -1,5 +1,5 @@
 import { Client } from 'discord.js';
-import { DiscordTogether } from './discord-together';
+import { DiscordTogether } from './DiscordTogether';
 import { ApplicationConfig, DefaultApplicationsConfig } from './applications';
 
 /**

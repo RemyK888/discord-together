@@ -1,5 +1,5 @@
 import { Client, Snowflake } from 'discord.js';
-import { ObjectKeys } from './types/object-keys';
+import { ObjectKeys } from './types/objectKeys';
 import { DefaultApplicationsConfig } from './applications/config';
 import { ApplicationConfig, ApplicationInviteCodeResponse } from './applications/types';
 
